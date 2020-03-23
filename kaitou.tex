@@ -1,0 +1,117 @@
+\documentclass[dvipdfmx,uplatex,11pt]{jsarticle}
+%
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{wrapfig}
+\usepackage{bm}
+\usepackage{ascmac}
+\setcounter{tocdepth}{2}
+\usepackage{geometry}
+\usepackage{framed}
+\usepackage{latexsym}
+%
+\geometry{left=10mm,right=10mm,top=5mm,bottom=10mm}
+%
+\begin{document}
+%
+\section{集合論}
+%
+\subsection{1.1.6}
+(1)
+\begin{leftbar}
+    \begin{proof}
+        $c \in C$を任意にとる．$g$は全射であるから，$g(b)=c$をみたす$b \in B$が存在し，その$b$に対して$f$の全射性により，$f(a)=b$を満たす$a \in A$が存在する．
+        以上の議論から，
+        \[
+            c = g(b)= g(f(a))=(g \circ f) (a)
+        \]
+        である，よって$g \circ f$も全射である．
+    \end{proof}
+\end{leftbar}
+(2)
+\begin{leftbar}
+    \begin{proof}
+       $a ，a' \in A$とし， $(g \circ f)(a)= (g \circ f) (a')$を仮定する．このとき，$g(f(a))=g(f(a'))$，$f(a)，f(a') \in B$であり，このとき$g$の単射性から$f(a)= f(a')$となり，さらに$f$の単射性から$a=a'$となる．よって，
+       \[
+        (g \circ f)(a)= (g \circ f) (a') \Longrightarrow a=a'
+       \]
+       となるため，$g \circ f$も単射である．
+    \end{proof}
+\end{leftbar}
+%
+%
+\newpage
+%
+\section{第2章・群の基本}
+
+\subsection{2.1.1}
+\noindent
+\\
+\textsl{Hint}：\\
+\dotfill
+
+\begin{leftbar}
+\begin{proof}
+まず，単位元について調べる．$G$は群であると仮定すると，単位元が存在し，それを$e$とすると，
+\[
+1 \circ e =1 ,\quad e \circ 1 =1
+\]
+であることから，単位元が存在すれば$e=1$である．\par
+このもとで逆元を考察する．$ 0 \in G$について，ある$b \in G$が存在して，
+\[
+0 \circ b = 1，\quad b \circ 0 =1
+\]
+となる．しかし，このような$b \in G$は存在せず，矛盾．したがって$G$は群でない．
+\end{proof}
+\end{leftbar}
+
+\newpage
+
+\subsection{2.1.2}
+\noindent
+\\
+\textsl{Hint}：\\
+\dotfill
+
+\begin{leftbar}
+\begin{proof}
+\noindent
+単位元の存在について調べる．いま，単位元が存在すると仮定し，それを$e$とおく．この演算は可換であることに留意して，
+\[
+a \circ e =  a + e +ae =a
+\]
+とすると，
+\[
+e (a+1)=0
+\]
+よって，$e=0$または$a=-1$である．\par
+まず，$a=-1$のとき，逆元が存在するか調べる．任意の$b \in \mathbb{R}$について，
+\[
+(-1) \circ b = -1 +b -b =-1 \ne 0
+\]
+よって，この演算によって$\mathbb{R}$は群とならない．よってただちに主張が従う．
+\end{proof}
+\end{leftbar}
+
+\newpage
+
+\subsection{2.3.5}
+\noindent
+\\
+\textsl{Hint}：\\
+\dotfill
+\begin{leftbar}
+    \begin{proof}
+        $R_{>} =\{x \mid x \in \mathbb{R}，0<x\}$とする．\\
+        (1)\quad $\mathbb{R}^{\times}$の単位元$1$について，$1 \in \mathbb{R}_{>}$である．\\
+        (2) \quad 演算の定義により，$\mathbb{R}_{>}$での加法は写像$\mathbb{R}_{>} \times \mathbb{R}_{>} \to \mathbb{R}_{>}$で定められるので，
+        $x，y \in \mathbb{R}_{>}$のとき，$xy \in \mathbb{R}_{>}$である．\\
+        (3) \quad $x \in \mathbb{R}_{>}$について，逆元は明らかに定義でき，$x^{-1} \in \mathbb{R}_{>}$である．\\
+        (1)，(2)，(3)により，部分群の必要十分条件の3つが満たされ，$\mathbb{R}_{>}$は$\mathbb{R}^{\times}$の乗法についての部分群である．
+    \end{proof}
+\end{leftbar}
+
+\end{document}
+
+
