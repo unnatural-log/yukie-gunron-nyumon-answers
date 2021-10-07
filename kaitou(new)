@@ -1,0 +1,329 @@
+\documentclass[uplatex,dvipdfmx,a4paper,11pt]{jsarticle}
+\usepackage{cite}
+
+%括弧
+\usepackage{delimseasy}
+
+%二段組
+\usepackage{multicol}
+\setlength{\columnseprule}{.5pt} %中央の線
+
+%フォント変更
+\usepackage[T1]{fontenc}
+\usepackage{tgheros}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[scaled]{helvet}
+%数式フォント
+%数式
+\usepackage{nccmath,amsmath,amssymb}
+\usepackage{mathtools}
+\usepackage{empheq} %数式の囲いに使う
+\usepackage{physics}
+\usepackage{bm}
+\usepackage[bbsets]{jkmath} %\Nなどをつかえる
+\usepackage{amsthm}
+
+%ハイパーリンク用
+\usepackage{url}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{xcolor}
+\hypersetup{colorlinks=true,citecolor={green!40!black},linkcolor={green!40!black},urlcolor={blue!70!black},}
+\usepackage[otfcid,otfmacros]{pxjahyper}
+\usepackage{bookmark}
+
+%tcolorbox系
+\usepackage[many]{tcolorbox}
+\tcbuselibrary{breakable,skins}
+\newtcolorbox{hosoibox}[1]{colframe=black,colback=white,coltitle=black,colbacktitle=white,boxrule=0.5pt,arc=0mm,,enhanced,attach boxed title to top left={xshift=10mm,yshift=-3mm},boxed title style={frame hidden},title=#1}
+
+%leftbar環境に注釈が入れられないことを解消する環境．名前は，tcolorboxの[t]とleftbarの組み合わせ
+\newtcolorbox{tbleftline}{blanker,left=5mm,borderline west={1.1mm}{0pt}{black}}
+\newenvironment{tleftbar}{\begin{tbleftline}\setlength{\parindent}{1zw}}{\end{tbleftline}}
+
+
+\usepackage {framed,color}
+
+%題名付き四角
+\usepackage{ascmac}
+\usepackage{fancybox}
+
+%囲い文字
+\usepackage[multi,jis2004,uplatex,expert,deluxe]{otf}
+%図に使うもの
+\usepackage{tikz}
+\usetikzlibrary{cd}
+\usepackage[dvipdfmx,marginparwidth=0pt,margin=25truemm]{geometry}
+\usepackage{bxpapersize}
+\usepackage[absolute,overlay]{textpos} %図の配置を好きにする
+
+%画像
+\usepackage{wrapfig}
+%footnoteの変更
+\renewcommand\thefootnote{{\dag}\arabic{footnote}}
+\renewcommand{\thempfootnote}{{\dag}\arabic{mpfootnote}}
+\interfootnotelinepenalty=10000
+
+\usepackage{oubraces} %overunderbraces
+
+%underbraceの文字数が多いときのためのadunderbrace
+\usepackage{ifthen}
+\newlength{\wdTempA}
+\newlength{\wdTempB}
+\newcommand{\adunderbrace}[2]{%
+\settowidth{\wdTempA}{$#1$}%
+\settowidth{\wdTempB}{${\scriptstyle #2}$}%
+\ifthenelse{\wdTempA<\wdTempB}{%
+\hspace*{.5\wdTempA}\hspace*{-.5\wdTempB}%
+\underbrace{#1}_{#2}%
+\hspace*{.5\wdTempA}\hspace*{-.5\wdTempB}%
+}{%
+\underbrace{#1}_{#2}%
+}%
+}%
+%丸付き文字
+\newcommand{\ctext}[1]{\raise0.2ex\hbox{\textcircled{\scriptsize{#1}}}}
+
+%ユーザー定義
+\newcommand{\dash}[1]{#1^\prime}
+\newcommand{\ddash}[1]{#1^{\prime\prime}}
+\newcommand{\dddash}[1]{#1^{\prime\prime\prime}}
+\newcommand{\hodash}[2]{#2^{(#1)}}
+\renewcommand{\labelenumi}{(\arabic{enumi})}%itemを(数字)に変更
+
+%inputなどのプリアンブルを無視
+\usepackage{docmute}
+
+\setcounter{secnumdepth}{0}
+
+
+\begin{document}
+
+\title{雪江代数学1(群論入門)：解答集}
+\author{}
+\date{\today}
+\maketitle
+\begin{multicols*}{3}
+    \tableofcontents
+\end{multicols*}
+\addcontentsline{toc}{section}{\texorpdfstring{目次}{目次}}
+\newpage
+
+\section{第1章の演習問題}
+
+
+\subsection{1.1.1}
+
+\begin{tleftbar}
+    $f$が$g$，$A$が$X$，$B$が${}^t X X$にそれぞれ対応する．
+\end{tleftbar}
+
+\subsection{1.1.2-(1)}
+
+
+\begin{tleftbar}
+    $f(S)= \{ 3, 4 \}$
+\end{tleftbar}
+
+\subsection{1.1.2-(2)}
+\begin{tleftbar}
+$f^{-1}(S_1)= \varnothing$，$f^{-1}(S_2)=\{ 1 , 3 , 4 , 5 \}$
+\end{tleftbar}
+
+\subsection{1.1.2-(3)}
+\begin{tleftbar}
+$2 \in B$であるが，$f(2)= \varnothing$であるため，$f$は全射でない．
+\end{tleftbar}
+
+\subsection{1.1.2-(4)}
+\begin{tleftbar}
+$f(3)= f(5)$であるが，$3 \ne 5$であるため，$f$は単射でない．
+\end{tleftbar}
+
+\newpage 
+
+\section{第2章}
+
+\subsection{2.3.3}
+\begin{tleftbar}
+    \begin{proof}
+        $H_1,H_2$は$G$の部分群ゆえ命題2.3.2より，$1_{G}\in H_1$かつ$1_{G}\in H_2$．したがって，$1_G\in H_2\cap H_2$．さらに，$a,b \in H_1\cap H_2$であるとき，$a,b\in H_1$であるから，命題2.3.2より$ab\in H_1$．同様にして$ab\in H_2$．したがって，$ab\in H_1\cap H_2$．$a\in H_1\cap H_2$とすると，$a\in H_1$と命題2.3.2より$a^{-1}\in H_1$．同様に$a\in H_2$より$a^{-1}\in H_2$．したがって，$a^{-1}\in H_1 \cap H_2$．以上より，命題2.3.2の(1)(2)(3)を$H_1\cap H_2$は満たすから，$H_1\cap H_2$は$G$の部分群．
+    \end{proof}
+\end{tleftbar}
+
+
+\subsection{2.3.14}
+\begin{tleftbar}
+    \begin{proof}
+        $S_1 \subset S_2$ならば，$S_1$のすべての元を$S_2$が含むので，$S_1$の元による語はすべて，$S_2$の元から作れる．したがって，$\langle S_1 \rangle \subset \langle S_2 \rangle$
+    \end{proof}
+\end{tleftbar}
+
+\subsection{2.3.15}
+\begin{tleftbar}
+    $\langle S \rangle =n\Z$というのは，$\Z$は演算を加法とする群であるから，$x^n=\underbrace{x+\cdots+x}_{n個}=nx$ということになり，$\langle S \rangle =\{x^n\mid n\in \Z\}=\{nx\mid n\in \Z\}$となる．\footnote{冪$x^n$の定義は定義2.1.3による．}
+\end{tleftbar}
+
+\subsection{2.3.20-(3)}
+
+\begin{tleftbar}
+    $S=\{\sigma,\tau\}$とすると，$\{\sigma\}\subset S$かつ$\{\tau\}\subset S$と命題2.3.14より，$\langle {\sigma} \rangle \subset \langle S \rangle$かつ$\langle {\tau} \rangle \subset \langle S \rangle$．したがって$\langle {\sigma} \rangle  \cup \langle {\tau} \rangle \subset \langle S \rangle$となり，(1),(2)の結果と合わせて，回答のようになる． 
+\end{tleftbar}
+
+
+\subsection{2.3.22}
+
+\begin{tleftbar}
+    $j=1,\cdots,t$に対し写像
+    \begin{align*}
+        i_j:G_j\ni g_j \mapsto (1_{G_1},\cdots,1_{G_{j-1}},g_j,1_{G_{j+1}},\cdots,1_{G_t}) \in G_1\cross \cdots \cross  G_t
+    \end{align*}  
+    を考えると，これは単射であるから，$G_j$を$G_1\cross \cdots \cross  G_t$の部分集合とみなせるというのは，写像の終域$G_1\cross \cdots \cross  G_t$の部分集合の元に対して，$G_j$の元がただ一つ対応するということから，$G_j$を$G_1\cross \cdots \cross  G_t$の部分集合と``みなす''ことができるということ．
+\end{tleftbar}
+
+
+\subsection{2.4.4}
+
+%なるべく正しそうな証明にしようと思って，グダグダ書いた．
+
+\begin{tleftbar}
+    \begin{proof}
+        $ n\in \Z$に対して$r(n)$を以下で定義する．\footnote{$j=m$だったりすると，$i_{j+1}$に移るわけではないので，そういったものを防ぐために$r$を導入した．}
+        \begin{align*}
+            r(n)=
+            \begin{cases}
+                (\text{$n$を$m$で割った余り})&(n\not\in m\Z)\\
+                m &(n\in m\Z)
+            \end{cases}
+        \end{align*}
+        $\sigma=(i_1\cdots i_m)$とすると，$\sigma$により$i_j$は$i_{r(j+1)}$に移る．ある$n\in \N$に対して$\sigma^n$によって$i_j$は$i_{r(j+n)}$に移るとすると，$\sigma^{n+1}$によって$i_j$は$i_{r(j+n+1)}$に移る．数学的帰納法により，$\sigma^n$によって$i_j$は$i_{r(j+n)}$に移る．ここで，$j=r(j+n)$を満たす最小の自然数$n$は$m$である．これは，$1\leq j \leq m$の任意の$j$に対して成立する．したがって，$\sigma$の位数は$m$である．
+    \end{proof}
+\end{tleftbar}
+
+
+\subsection{2.4.17}
+\begin{tleftbar}
+    ここでの群は，加法による群である．$d\in H$ならば$d+d\in H$である．これを繰り返せば$d^q=qd\in H$である．$H$は$\Z$の部分群であるから，$(d^q)^{-1}=-qd\in H$である．よって，$n\in H$ならば$r=n+(-qd)=n-qd\in H$である．ところで，$r$は$0\leq r<d$を満たすものであるので，$r\neq 0$とすると$d$未満の正整数が$H$の元としてあることになって，$d$の取り方に矛盾する．よって，$r=0$であるから，$n=qd\in d\Z$となり，$n\in H$ならば$n\in d\Z$である．したがって，$H \subset d\Z$．\footnote{$H\supset d\Z$は明らかなのか，証明が省かれている．}
+
+    \begin{proof}
+        ($H \supset d\Z$の証明)\,\,$n\in d\Z$とすると，$d\Z=\langle \{d\}\rangle$であり，$d\in H$ゆえ，$\{d\}\subset H$である．また，命題2.3.13より$\{d\}\subset H$ならば$\langle \{d\}\rangle \subset H$である．したがって，$d\Z \subset H$である．
+    \end{proof}
+    $H \subset d\Z$かつ$H \supset d\Z$より$H=d\Z$
+\end{tleftbar}
+
+\section{第2章の演習問題}
+
+\subsection{2.1.1}
+\begin{tleftbar}
+    $1$が単位元である．$0$に逆元がないことがわかる．したがって，$G$は演算$\cdot$により群とならない．
+\end{tleftbar}
+
+
+\subsection{2.1.2}
+\begin{tleftbar}
+    $0$が単位元である．$a+b+ba=0$とすると，$a\neq -1$のときは$b=-\frac{a}{1+a}$となるが，$a=-1$のときは任意の$b\in \R$に対して$a+b+ab=-1$となるため，$-1$の逆元が存在しない．したがって，$\R$は演算$\circ$により群とならない．\footnote{結合法則は成立している．}
+\end{tleftbar}
+
+\subsection{2.1.4}
+\begin{tleftbar}
+    $((ab)c)d=(a(bc))d=a((bc)d)$
+\end{tleftbar}
+
+
+\subsection{2.2.2}
+\begin{tleftbar}
+    \begin{description}
+        \item[(3)]$39$を法とする合同式を使うと 
+        \begin{align*}
+            16^8&=(13+3)^8\\
+            &\equiv 13^8+3^8 &&(\text{これら以外の項は$13$と$3$の両方を因数に持つ})\\
+            &\equiv 13(12+1)^7+3^2\cdot 27\cdot 27\\
+            &\equiv 13 +3^2(13\cdot 2 +1)(13\cdot 2 +1) &&((12+1)^7\text{を展開すると，$1$以外の項は全て$3$を因数に持つ})\\
+            &\equiv 13+3^2\cdot 1 =22
+        \end{align*} 
+        となる．ここから答えがわかる．
+        \item[(4)] (3)と同様に計算を行うと
+        \begin{fleqn}[30pt]
+            \begin{align*}
+                16^{34}&=(13+3)^{34}\\
+                &\equiv 13^{34}+3^{34} \\
+                &\equiv 13(12+1)^{33}+3(13\cdot 2+1)^{11}\\
+                &\equiv 13+3=16
+            \end{align*}  
+        \end{fleqn} 
+        となる．ここから答えがわかる．
+    \end{description}
+\end{tleftbar}
+
+
+\subsection{2.3.1}
+\begin{tleftbar}
+\begin{proof}
+        $H$が$G$の部分群であることと同値な条件は命題2.3.2から，
+        \begin{fleqn}[30pt]
+            \begin{align*}
+                \begin{cases}
+                    \text{\ajMaru{1}}\quad  1_G\in H\\
+                    \text{\ajMaru{2}}\quad \forall x,\forall y\in H\,,\,xy\in H\\
+                    \text{\ajMaru{3}}\quad \forall x\,,\, x^{-1}\in H
+                \end{cases}
+            \end{align*}
+        \end{fleqn}
+        である．これを用いて証明する．\\
+        $\Longrightarrow$の証明$\colon$ \ajMaru 2 と\ajMaru 3 より $H$が$G$の部分群であれば，任意の$x,y\in H$に対して$x^{-1}y\in H$\\
+        $\Longleftarrow$の証明$\colon$ 任意の$x\in H$に対して$x^{-1}x=1_G\in H$である(\ajMaru 1)．$1_G \in H$より，任意の$x\in H$に対して$x^{-1}1_G=x^{-1}\in H$である(\ajMaru 3)．任意の$x\in H$に対して$x^{-1}\in H$であるから，任意の$x,y\in H$に対して$(x^{-1})^{-1}y=xy\in H$である(\ajMaru 2)．
+\end{proof}
+\end{tleftbar}
+
+
+
+\subsection{2.3.2}
+\begin{tleftbar}
+    \begin{proof}
+        まずは，命題2.3.2を使って考えてみる．$G=\mathrm{GL}_{2n}(\R)$とする．\footnote{P31例2.3.9によると，$\mathrm{Sp}(2n)=\mathrm{Sp}(4n,\R)$となるはずだが，$\mathrm{GL}_{2n}(\R)$の部分群になるためにはそんな訳ないので，ここでは$\mathrm{Sp}(2n)=\mathrm{Sp}(2n,\R)$と考える．}
+        単位行列$I_{2n}=1_G\in G$は\\
+        ${}^tI_{2n}J_nI_{2n}=J_n$を満たすから，$1_G \in \mathrm{Sp}(2n)$である．また，$A,B\in \mathrm{Sp}(2n)$とすると，
+        \begin{align*}
+            ^t(AB)J_n(AB)={}^tB{}^tAJ_nAB ={}^tBJ_nB=J_n
+        \end{align*}
+        となるから，$AB\in \mathrm{Sp}(2n)$である．また，$A\in \mathrm{Sp}(2n)$とすると
+        \begin{align*}
+            ^t(A^{-1})J_nA^{-1}=({}^tA)^{-1}\textcolor{red}{J_n}A^{-1}=({}^tA)^{-1}\textcolor{red}{{}^tAJ_nA}A^{-1}=J_n
+        \end{align*}
+        となるから，$A^{-1}\in \mathrm{Sp}(2n)$である．
+    \end{proof}
+    \begin{proof}
+        次に，演習問題2.3.1の必要十分条件を使って考えてみる．$1_G \in \mathrm{Sp}(2n)$より，$\mathrm{Sp}(2n)$は空でない$G$の部分集合である．$A,B\in \mathrm{Sp}(2n)$とすると
+        \begin{align*}
+            {}^t(A^{-1}B)\textcolor{red}{J_n}(A^{-1}B)={}^tB {}^t(A^{-1})\textcolor{red}{{}^t\!AJ_nA}A^{-1}B={}^tB ({}^t\!A)^{-1}\,{}^t\!A J_n B ={}^t BJ_nB=J_n
+        \end{align*}
+        となるから，$A^{-1}B\in \mathrm{Sp}(2n)$である．
+    \end{proof}
+\end{tleftbar}
+
+
+
+\subsection{2.3.3}
+\begin{tleftbar}
+    \begin{proof}
+        命題2.3.2を使って考える．$G=\mathrm{GL}_{n}(\C)$とする．単位行列$I_n=1_G\in G$は${}^t\bar{I_n}I_n={}^tI_nI_n=I_n$を満たすから，$1_G\in \mathrm{U}(n)$である．また，$A,B\in \mathrm{U}(n)$とすると，
+        \begin{align*}
+            {}^t(\bar{A}\bar{B})(AB)={}^t\bar{B}{}^t\!\bar{A}AB={}^t\bar{B}B=I_n
+        \end{align*}
+        となるから，$AB\in \mathrm{U}(n)$である．また，$A\in \mathrm{U}(n)$とすると，
+        \begin{align*}
+            {}^t\!\overline{A^{-1}}A^{-1}={}^t\!\overline{A^{-1}}\textcolor{red}{I_n}A^{-1}=\overline{{}^t\!A}{}^{-1}\textcolor{red}{{}^t\!\bar{A}A}A^{-1}=I_n
+        \end{align*}
+        となるから，$A^{-1}\in \mathrm{U}(n)$である．
+    \end{proof}
+    \begin{proof}
+        演習問題2.3.1の必要十分条件を使って考える．$1_G\in \mathrm{U}(n)$より，$\mathrm{U}(n)$は空でない$G$の部分集合である．$A,B\in \mathrm{U}(n)$とすると
+        \begin{align*}
+            {}^t(\overline{A^{-1}B})(A^{-1}B)={}^t\bar{B}{}^t(\overline{A^{-1}})\textcolor{red}{I_n}A^{-1}B={}^t\bar{B}\,({}^t\bar{A}){}^{-1}\textcolor{red}{{}^t\bar{A}A}A^{-1}B={}^t\bar{B}B=I_n
+        \end{align*}
+        となるので，$A^{-1}B\in \mathrm{U}(n)$．ただし，共役を取ってから逆行列を求めても，逆行列を求めてから共役を取っても変わらず\footnote{行列式の計算は和と積のみで，余因子を求めるときにも和と積の計算しかしない．任意の複素数$z,w$に対して$\overline{zw}=\bar{z}\bar{w}$で，$\overline{z+w}=\bar{z}+\bar{w}$であることからこれがわかる．}，共役を取ってから転置を取っても，転置をとってから共役を取っても変わらないことを用いた．
+    \end{proof}
+\end{tleftbar}
+
+
+\end{document}
